@@ -1,3 +1,26 @@
-<p>
-  home works!
-</p>
+<div class="espacioCabeza"></div>
+<div class="container">
+  <md-card >
+    <md-card-header class="limiteHeader">
+      <md-card-title>Lenguajes de Programación</md-card-title>
+      <md-card-subtitle>A01022029 | A01336386 | A01337828 | A01333760</md-card-subtitle>
+    </md-card-header>
+    <div class="espacioContenido"></div>
+    <md-card-content>
+      <div [@resultadosChanged]="resA" (@resultadosChanged.done)="cambiar()">
+        <div *ngIf="res">
+          <len-resultados></len-resultados>
+        </div>
+      </div>
+      <div [@ingresoChanged]="ingA" (@ingresoChanged.done)="cambiar()">
+        <div *ngIf="ing">
+          <len-ingreso-datos></len-ingreso-datos>
+        </div>
+      </div>
+    </md-card-content>
+    <md-card-actions>
+      <button  *ngIf="res"  md-raised-button (click)="resA='off';n=1" color="primary">Res</button>
+      <button  *ngIf="ing" md-raised-button (click)="ingA='off';n=2" color="primary">Ing</button>
+    </md-card-actions>
+  </md-card>
+</div>

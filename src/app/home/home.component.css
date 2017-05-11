@@ -1,0 +1,9 @@
+.espacioCabeza{
+  height: 40px;
+}
+.espacioContenido{
+  height: 15px;
+}
+.limiteHeader{
+  border-bottom: 1px solid #ddd
+}
