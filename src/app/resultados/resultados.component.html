@@ -1,3 +1,20 @@
-<p>
-  resultados works!
-</p>
+<div>
+  <h4>Catálogo de Estudiantes.</h4>
+</div>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th >ID</th>
+      <th >Nombre</th>
+      <th >Promedio Global</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let es of estudiantes" class="renglonTabla">
+      <td>{{es.id}}</td>
+      <td>{{es.nombre}}</td>
+      <td>{{es.promedioGlobal}}</td>
+    </tr>
+  </tbody>
+
+</table>

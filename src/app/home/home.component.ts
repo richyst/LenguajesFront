@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
   cambiar():void{
     if(this.resA==='off' && this.n===1){
       this.res=false;
@@ -49,6 +48,4 @@ export class HomeComponent implements OnInit {
       this.res=true;
     }
   }
-
-
 }

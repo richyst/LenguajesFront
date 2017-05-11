@@ -6,24 +6,23 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EstudiantesService {
-  baseUrl:' http://localhost:8080/restdrools/';
 
   constructor(private _http: Http) { }
 
   getEstudiantes(){
-    return this._http.get(this.baseUrl+'estudiantes/')
+    return this._http.get('http://localhost:8080/restdrools/estudiantes/')
     .map(res => res.json());
   }
 
   getEstudiante(id:string){
-    return this._http.get(this.baseUrl+'estudiantes/'+id)
+    return this._http.get('http://localhost:8080/restdrools/estudiantes/'+id)
     .map(res => res.json());
   }
 
   postMateria(estudiante:Estudiante){
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
-    return this._http.post(this.baseUrl+'estudiantes/inserta', estudiante, {headers: headers})
+    return this._http.post('http://localhost:8080/restdrools/estudiantes/inserta', estudiante, {headers: headers})
     .map(res => res.json());
   }
 }

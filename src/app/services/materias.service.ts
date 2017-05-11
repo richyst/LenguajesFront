@@ -6,22 +6,21 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MateriasService {
-  baseUrl:' http://localhost:8080/restdrools/';
   constructor(private _http: Http) { }
 
 
   getMaterias(){
-    return this._http.get(this.baseUrl+'materias/')
+    return this._http.get('http://localhost:8080/restdrools/materias/')
     .map(res => res.json());
   }
   getMateria(id:string){
-    return this._http.get(this.baseUrl+'materias/'+id)
+    return this._http.get('http://localhost:8080/restdrools/materias/'+id)
     .map(res => res.json());
   }
   postMateria(materia:Materia){
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
-    return this._http.post(this.baseUrl+'materias/inserta', materia, {headers: headers})
+    return this._http.post('http://localhost:8080/restdrools/materias/inserta', materia, {headers: headers})
     .map(res => res.json());
   }
 }
