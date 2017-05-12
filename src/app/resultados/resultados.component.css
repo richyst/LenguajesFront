@@ -1,3 +1,6 @@
 .renglonTabla{
   cursor: pointer;
 }
+.boton{
+  float: right;
+}

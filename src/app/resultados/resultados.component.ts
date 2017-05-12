@@ -47,6 +47,7 @@ export class ResultadosComponent implements OnInit {
 
   selectEstudiante(es:Estudiante):void{
     this.selected=es;
+    this.selected.promedioGlobal=Number(es.promedioGlobal.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0])
     this.getEstudMat(this.selected.id);
   }
 
@@ -63,9 +64,10 @@ export class ResultadosComponent implements OnInit {
   }
 
   limpiarMaterias():void{
+    this.materias=new Array();
     for(var i = 0; i<this.relaciones.length;i++){
       for(var k = 0; k<this.materiasDirt.length;k++){
-        if(this.relaciones[i].id_materia==this.materiasDirt[k].id){
+        if(this.relaciones[i].idMateria==this.materiasDirt[k].id){
           this.materias.push(this.materiasDirt[k]);
         }
       }

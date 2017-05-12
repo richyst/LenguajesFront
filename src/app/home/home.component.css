@@ -7,3 +7,7 @@
 .limiteHeader{
   border-bottom: 1px solid #ddd
 }
+.botones{
+  display: flex;
+  justify-content: center;
+}

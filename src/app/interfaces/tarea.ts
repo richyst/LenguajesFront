@@ -1,6 +1,6 @@
 export interface Tarea {
-  id_tarea:number;
-  id_tema: number;
+  id:number;
+  idTema: number;
   nombre: string;
   dificultad: number;
 }

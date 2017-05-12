@@ -1,6 +1,7 @@
 <!-- Datos de la materia singular que se tiene del estudiante -->
 <div>
-  Zapato
+  <h4>{{materia.nombre}}</h4>
+  <h5 class="text-muted">Impartida por: {{materia.maestro}}. Nivel de Curso: {{materia.nivelCurso}}</h5>
 </div>
 
 <div *ngFor="let tema of temas">
