@@ -9,12 +9,18 @@ import { IngresoDatosComponent } from './ingreso-datos/ingreso-datos.component';
 import { ResultadosComponent } from './resultados/resultados.component';
 import { HomeComponent } from './home/home.component';
 import 'hammerjs';
+import { ResMateriasComponent } from './res-materias/res-materias.component';
+import { ResTemasComponent } from './res-temas/res-temas.component';
+import { ResTareasComponent } from './res-tareas/res-tareas.component';
 @NgModule({
   declarations: [
     AppComponent,
     IngresoDatosComponent,
     ResultadosComponent,
-    HomeComponent
+    HomeComponent,
+    ResMateriasComponent,
+    ResTemasComponent,
+    ResTareasComponent
   ],
   imports: [
     BrowserModule,

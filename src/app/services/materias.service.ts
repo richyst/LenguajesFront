@@ -13,7 +13,7 @@ export class MateriasService {
     return this._http.get('http://localhost:8080/restdrools/materias/')
     .map(res => res.json());
   }
-  getMateria(id:string){
+  getMateria(id:number){
     return this._http.get('http://localhost:8080/restdrools/materias/'+id)
     .map(res => res.json());
   }

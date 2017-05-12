@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let es of estudiantes" class="renglonTabla">
+    <tr *ngFor="let es of estudiantes" class="renglonTabla" (click)="selectEstudiante(es)">
       <td>{{es.id}}</td>
       <td>{{es.nombre}}</td>
       <td>{{es.promedioGlobal}}</td>
@@ -18,3 +18,7 @@
   </tbody>
 
 </table>
+{{materias.length}} {{materias}}
+<div *ngFor="let mat of materias">
+  <len-res-materias [materia]="mat" [idUser]="selected.id"></len-res-materias>
+</div>

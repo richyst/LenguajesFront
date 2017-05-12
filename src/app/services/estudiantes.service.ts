@@ -14,8 +14,13 @@ export class EstudiantesService {
     .map(res => res.json());
   }
 
-  getEstudiante(id:string){
+  getEstudiante(id:number){
     return this._http.get('http://localhost:8080/restdrools/estudiantes/'+id)
+    .map(res => res.json());
+  }
+
+  getEstudMat(id:number){
+    return this._http.get('http://localhost:8080/restdrools/estud_mat/'+id)
     .map(res => res.json());
   }
 
