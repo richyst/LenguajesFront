@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EstudiantesService} from '../services/estudiantes.service';
 import {MateriasService} from '../services/materias.service';
 import {Estudiante} from '../interfaces/estudiante';
+import {Materia} from '../interfaces/materia';
 
 @Component({
   selector: 'len-ingreso-datos',
@@ -12,6 +13,7 @@ import {Estudiante} from '../interfaces/estudiante';
 export class IngresoDatosComponent implements OnInit {
   nombre :string;
   estudiante : Estudiante=<Estudiante>{};
+  materia:Materia=<Materia>{};
   estVis:boolean=false;
   matVis:boolean=false;
 
@@ -37,6 +39,15 @@ export class IngresoDatosComponent implements OnInit {
     this.estudiante.promedioGlobal=0;
     this.estudiante.recomendaciones=[];
     this._eService.postEstudiante(this.estudiante)
+      .subscribe(
+        data => {
+          console.log(JSON.stringify(data))
+        },
+        error => console.log(error)
+      );
+  }
+  postMateria():void{
+    this._mService.postMateria(this.materia)
       .subscribe(
         data => {
           console.log(JSON.stringify(data))

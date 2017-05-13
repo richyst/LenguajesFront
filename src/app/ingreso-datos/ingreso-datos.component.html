@@ -1,4 +1,4 @@
-<h3>Ingreso de Datos</h3>
+<h3>Ingreso de Datos de:</h3>
 <div class="seleccion">
     <button md-raised-button  class="botones" mdTooltip="Crear nuevo estudiante" mdTooltipPosition="above" (click)="display(1)" color="primary">Estudiantes</button>
     <button md-raised-button  class="botones" mdTooltip="Crear nueva materia" mdTooltipPosition="above" (click)="display(2)" color="primary">Materias</button>
@@ -6,15 +6,33 @@
 <hr>
 <div *ngIf="estVis" class="container">
   <h4>Nuevo Estudiante</h4>
-  <form #formCreate="ngForm" novalidate (ngSubmit)="postEstudiante()">
-    <md-input-container class="inputMed">
-      <input type="text" mdInput [(ngModel)]="estudiante.nombre" name="nombre" placeholder="Nombre" required>
-    </md-input-container>
+  <div class="usuario">
+    <form #formCreate="ngForm" novalidate (ngSubmit)="postEstudiante()">
+      <md-input-container class="inputMed">
+        <input type="text" mdInput [(ngModel)]="estudiante.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <small *ngIf="!nombre.valid && nombre.dirty && estudiante.nombre!=''" class="text-danger">Caractéres inválidos en nombre.</small>
+      <button md-raised-button [disabled]="!formCreate.valid" type="submit" color="primary">Crear</button>
 
-    <button md-raised-button [disabled]="!formCreate.valid" type="submit" color="primary">Crear</button>
+    </form>
+  </div>
 
-  </form>
 </div>
-<div *ngIf="matVis">
-
+<div *ngIf="matVis" class="container">
+  <h4>Nueva Materia</h4>
+  <div class="materias">
+    <form #formCreateMat="ngForm" novalidate (ngSubmit)="postMateria()">
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="materia.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <small *ngIf="!nombre.valid && nombre.dirty && materia.nombre!=''" class="text-danger">Caractéres inválidos en nombre.</small>
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="materia.maestro" name="maestro" placeholder="Maestro que imparte" required >
+      </md-input-container>
+      <md-input-container class="inputMat">
+        <input type="number" mdInput [(ngModel)]="materia.nivelCurso" name="nivelCurso" placeholder="Nivel del Curso" required>
+      </md-input-container>
+      <button md-raised-button [disabled]="!formCreateMat.valid" type="submit" color="primary">Crear</button>
+    </form>
+  </div>
 </div>
