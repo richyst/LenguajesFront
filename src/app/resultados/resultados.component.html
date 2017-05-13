@@ -29,4 +29,7 @@
     <len-res-materias [materia]="mat" [idUser]="selected.id"></len-res-materias>
     <hr>
   </div>
+  <div *ngIf="materias.length===0">
+    <h4>Este usuario no tiene materias registradas.</h4>
+  </div>
 </div>

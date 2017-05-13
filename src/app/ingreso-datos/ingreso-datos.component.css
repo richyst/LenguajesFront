@@ -1,0 +1,12 @@
+.botones{
+  width: 25%;
+  justify-content: center;
+}
+.seleccion{
+  text-align: center;
+}
+.inputMed{
+  width: 20%;
+  margin-right: 35px;
+  margin-left: 260px ;
+}

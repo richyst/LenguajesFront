@@ -13,14 +13,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         opacity: 0, transform: 'translate3d(-100%,0,0) '
       })),
       transition('* => *',[
-        animate('600ms')
+        animate('300ms')
       ])
     ]),
     trigger('resultadosChanged', [
       state('on' , style({ opacity: 1, transform: 'translateX(0%)' })),
       state('off', style({ opacity: 0, transform: 'translateX(100%) '  })),
       transition('* => *',[
-        animate('600ms')
+        animate('300ms')
       ])
     ])
   ]

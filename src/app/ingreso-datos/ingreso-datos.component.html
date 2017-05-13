@@ -1,3 +1,20 @@
-<p>
-  ingreso-datos works!
-</p>
+<h3>Ingreso de Datos</h3>
+<div class="seleccion">
+    <button md-raised-button  class="botones" mdTooltip="Crear nuevo estudiante" mdTooltipPosition="above" (click)="display(1)" color="primary">Estudiantes</button>
+    <button md-raised-button  class="botones" mdTooltip="Crear nueva materia" mdTooltipPosition="above" (click)="display(2)" color="primary">Materias</button>
+</div>
+<hr>
+<div *ngIf="estVis" class="container">
+  <h4>Nuevo Estudiante</h4>
+  <form #formCreate="ngForm" novalidate (ngSubmit)="postEstudiante()">
+    <md-input-container class="inputMed">
+      <input type="text" mdInput [(ngModel)]="estudiante.nombre" name="nombre" placeholder="Nombre" required>
+    </md-input-container>
+
+    <button md-raised-button [disabled]="!formCreate.valid" type="submit" color="primary">Crear</button>
+
+  </form>
+</div>
+<div *ngIf="matVis">
+
+</div>

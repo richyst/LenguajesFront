@@ -19,6 +19,13 @@ export class EstudiantesService {
     .map(res => res.json());
   }
 
+  postEstudiante(estudiante: Estudiante){
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.post('http://localhost:8080/restdrools/estudiantes/inserta', estudiante, {headers: headers})
+    .map(res => res.json());
+  }
+
   getEstudMat(id:number){
     return this._http.get('http://localhost:8080/restdrools/estud_mat/'+id)
     .map(res => res.json());
