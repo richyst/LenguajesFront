@@ -25,7 +25,7 @@
       <md-input-container class="inputMat">
         <input type="text" mdInput [(ngModel)]="materia.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
       </md-input-container>
-      <small *ngIf="!nombre.valid && nombre.dirty && materia.nombre!=''" class="text-danger">Caractéres inválidos en nombre.</small>
+      <small *ngIf="!nombre.valid && nombre.dirty && materia.nombre!=''" class="text-danger warn">Caractéres inválidos en nombre.</small>
       <md-input-container class="inputMat">
         <input type="text" mdInput [(ngModel)]="materia.maestro" name="maestro" placeholder="Maestro que imparte" required >
       </md-input-container>

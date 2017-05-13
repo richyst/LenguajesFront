@@ -12,6 +12,9 @@ import 'hammerjs';
 import { ResMateriasComponent } from './res-materias/res-materias.component';
 import { ResTemasComponent } from './res-temas/res-temas.component';
 import { ResTareasComponent } from './res-tareas/res-tareas.component';
+import { FormularioTemaComponent } from './formulario-tema/formulario-tema.component';
+import { FormularioTareaComponent } from './formulario-tarea/formulario-tarea.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,10 @@ import { ResTareasComponent } from './res-tareas/res-tareas.component';
     HomeComponent,
     ResMateriasComponent,
     ResTemasComponent,
-    ResTareasComponent
+    ResTareasComponent,
+    FormularioTemaComponent,
+    FormularioTareaComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,

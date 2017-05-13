@@ -1,5 +1,5 @@
-<button  *ngIf="selected" md-raised-button class="boton" (click)="selected=null;" color="primary">Catálogo de Estudiantes</button>
-<div *ngIf="!selected">
+<button  *ngIf="selected && matVis" md-raised-button class="boton" (click)="editar(2);selected=null;" color="primary">Regresar</button>
+<div *ngIf="!selected && tablaVis">
   <div>
     <h4>Catálogo de Estudiantes.</h4>
   </div>
@@ -9,19 +9,33 @@
         <th >ID</th>
         <th >Nombre</th>
         <th >Promedio Global</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let es of estudiantes" class="renglonTabla" (click)="selectEstudiante(es)">
+      <tr *ngFor="let es of estudiantes" class="renglonTabla" (click)="editar(3);selectEstudiante(es);">
         <td>{{es.id}}</td>
         <td>{{es.nombre}}</td>
         <td>{{es.promedioGlobal}}</td>
+        <td class="text-muted acciones">
+          <span
+          mdTooltip="Editar estudiante"
+          mdTooltipPosition="right"
+          class="glyphicon glyphicon-pencil"
+          (click)="editar(1); selectEstudiante(es);">
+
+          </span>
+        </td>
       </tr>
     </tbody>
 
   </table>
 </div>
-<div *ngIf="selected">
+<div *ngIf="editVis">
+  <button md-raised-button class="boton" type="button" (click)="editar(2);selected=null;" color="primary">Regresar</button>
+  <len-editar-usuario [estudiante]="selected"></len-editar-usuario>
+</div>
+<div *ngIf="selected && matVis">
   <h3>Materias cursadas por {{selected.nombre}}</h3>
   <h4 class="text-muted">Promedio Global: {{selected.promedioGlobal}}</h4>
   <hr>

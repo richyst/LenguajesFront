@@ -10,17 +10,21 @@
   margin-right: 35px;
   display: block;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 .inputMat{
   width: 25%;
   margin-right: 35px;
   display: block;
   margin-top: 30px;
+  margin-bottom: 0px;
 }
 .materias{
   margin-left: 260px;
 }
 .usuario{
   margin-left: 260px;
+}
+.warn{
+  margin-top: 0px;
+  padding-top: 0px;
 }

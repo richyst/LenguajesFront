@@ -22,7 +22,13 @@ export class EstudiantesService {
   postEstudiante(estudiante: Estudiante){
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
-    return this._http.post('http://localhost:8080/restdrools/estudiantes/inserta', estudiante, {headers: headers})
+    return this._http.post('http://localhost:8080/restdrools/estudiantes/', estudiante, {headers: headers})
+    .map(res => res.json());
+  }
+  putEstudiante(estudiante: Estudiante){
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.put('http://localhost:8080/restdrools/estudiantes/editar/'+estudiante.id, estudiante, {headers: headers})
     .map(res => res.json());
   }
 

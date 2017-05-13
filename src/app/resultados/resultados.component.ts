@@ -16,6 +16,9 @@ export class ResultadosComponent implements OnInit {
   materias = new Array();
   materiasDirt: Array <Materia>;
   relaciones=[];
+  editVis:boolean=false;
+  tablaVis:boolean=true;
+  matVis:boolean=false;
   constructor(private _eService: EstudiantesService,private _mService: MateriasService) { }
 
   ngOnInit() {
@@ -58,6 +61,24 @@ export class ResultadosComponent implements OnInit {
         },
         error => console.log(error)
       );
+  }
+
+  editar(n:number):void{
+    if(n==1){
+      this.editVis=true;
+      this.tablaVis=false;
+      this.matVis=false;
+    }
+    if(n==2){
+      this.editVis=false;
+      this.tablaVis=true;
+      this.matVis=false;
+    }
+    if(n==3){
+      this.editVis=false;
+      this.tablaVis=false;
+      this.matVis=true;
+    }
   }
 
   limpiarMaterias():void{

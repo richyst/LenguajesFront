@@ -1,0 +1,11 @@
+<div class="container">
+  <h4>Edicion de Usuario</h4>
+  <div class="materias">
+    <form #formEdit="ngForm" novalidate (ngSubmit)="update()">
+      <md-input-container class="inputUsr">
+        <input type="text" mdInput [(ngModel)]="estudiante.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <button md-raised-button [disabled]="!formEdit.valid" type="submit" color="primary">Actualizar</button>
+    </form>
+  </div>
+</div>
