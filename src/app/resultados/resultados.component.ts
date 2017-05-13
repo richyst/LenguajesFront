@@ -26,7 +26,6 @@ export class ResultadosComponent implements OnInit {
     this._eService.getEstudiantes()
       .subscribe(
         data => {
-          console.log(data);
           this.estudiantes=data;
           this.getMaterias();
         },
@@ -38,7 +37,6 @@ export class ResultadosComponent implements OnInit {
     this._mService.getMaterias()
       .subscribe(
         data => {
-          console.log(data);
           this.materiasDirt=data;
         },
         error => console.log(error)
@@ -55,7 +53,6 @@ export class ResultadosComponent implements OnInit {
     this._eService.getEstudMat(id)
       .subscribe(
         data => {
-          console.log(data);
           this.relaciones=data;
           this.limpiarMaterias();
         },
@@ -72,6 +69,5 @@ export class ResultadosComponent implements OnInit {
         }
       }
     }
-    console.log(this.materias);
   }
 }
