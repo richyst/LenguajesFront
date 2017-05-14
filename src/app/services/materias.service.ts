@@ -20,7 +20,7 @@ export class MateriasService {
   postMateria(materia:Materia){
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
-    return this._http.post('http://localhost:8080/restdrools/materias/inserta', materia, {headers: headers})
+    return this._http.post('http://localhost:8080/restdrools/materias/', materia, {headers: headers})
     .map(res => res.json());
   }
 }

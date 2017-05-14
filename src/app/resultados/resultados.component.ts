@@ -48,7 +48,10 @@ export class ResultadosComponent implements OnInit {
 
   selectEstudiante(es:Estudiante):void{
     this.selected=es;
-    this.selected.promedioGlobal=Number(es.promedioGlobal.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0])
+    if(!isNaN(es.promedioGlobal)){
+      this.selected.promedioGlobal=Number(es.promedioGlobal.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0])
+    }
+
     this.getEstudMat(this.selected.id);
   }
 

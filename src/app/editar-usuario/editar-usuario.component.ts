@@ -16,6 +16,7 @@ export class EditarUsuarioComponent implements OnInit {
   materiasTot:Array<Materia>;
   inscribir:Array<Materia>=[];
   obj:any={};
+  checks:Array<any>=[];
   mensaje:string;
   constructor(private _eService: EstudiantesService,private _mService: MateriasService) { }
 
@@ -63,11 +64,11 @@ export class EditarUsuarioComponent implements OnInit {
       for(var j = 0; j<this.materiasEst.length;j++){
         if(this.materiasTot[i].id===this.materiasEst[j].idMateria){
           check=true;
-
         }
       }
       if(!check){
         this.inscribir.push(this.materiasTot[i]);
+        
       }
     }
     console.log(this.inscribir);
@@ -84,7 +85,9 @@ export class EditarUsuarioComponent implements OnInit {
         data => {
           console.log(data);
         },
-        error => console.log(error)
+        error => {
+          console.log(error);
+        }
       );
   }
 }
