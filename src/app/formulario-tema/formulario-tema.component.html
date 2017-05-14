@@ -1,10 +1,19 @@
-<h5>Tema de Materia a Crear</h5>
-<form #formCreateTem="ngForm" novalidate (ngSubmit)="postTema()">
-  <md-input-container class="inputMat">
-    <input type="text" mdInput [(ngModel)]="tema.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
-  </md-input-container>
-  <md-input-container class="inputMat">
-    <input type="number" mdInput [(ngModel)]="tema.nivel" name="nivel" placeholder="Nivel del Tema" required min="1" max="10">
-  </md-input-container>
-  <button md-raised-button [disabled]="!formCreateTem.valid" type="submit" color="primary">Crear</button>
-</form>
+<div mdTooltip="Puedes crear varios temas cambiando los campos de texto." mdTooltipPosition="below">
+  <h5>Tema de Materia a Crear</h5>
+  <div class="materias">
+    <form #formCreateTem="ngForm" novalidate (ngSubmit)="postTema();submitted=true;">
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="tema.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <md-input-container class="inputMat">
+        <input type="number" mdInput [(ngModel)]="tema.nivel" name="nivel" placeholder="Nivel del Tema" required min="1" max="10">
+      </md-input-container>
+      <button md-raised-button [disabled]="!formCreateTem.valid" type="submit" color="primary">Crear</button>
+      <button md-raised-button *ngIf="submitted" mdTooltip="Se creará bajo la materia {{materia.nombre}}" mdTooltipPosition="below" type="button" (click)="crearTarea=true" color="primary">Agregar Tarea</button>
+    </form>
+  </div>
+
+</div>
+<div *ngIf="crearTarea">
+  <len-formulario-tarea [tema]="tema"></len-formulario-tarea>
+</div>

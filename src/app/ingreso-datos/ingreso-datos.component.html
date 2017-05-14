@@ -18,7 +18,7 @@
   </div>
 
 </div>
-<div *ngIf="matVis" class="container">
+<div *ngIf="matVis" class="container" mdTooltip="Puedes crear varias materias cambiando los campos de texto." mdTooltipPosition="below">
   <h4>Nueva Materia</h4>
   <div class="materias">
     <form #formCreateMat="ngForm" novalidate (ngSubmit)="postMateria();submitted=true;">
@@ -38,7 +38,8 @@
     </form>
 
   </div>
-  <div *ngIf="submitted && agregarTema" class="materias">
-    <len-formulario-tema [materia]="materia"></len-formulario-tema>
-  </div>
+
+</div>
+<div *ngIf="submitted && agregarTema" class="container">
+  <len-formulario-tema [materia]="materia"></len-formulario-tema>
 </div>

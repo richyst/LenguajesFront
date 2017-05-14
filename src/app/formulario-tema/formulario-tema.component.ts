@@ -12,6 +12,8 @@ import {Materia} from '../interfaces/materia';
 export class FormularioTemaComponent implements OnInit {
   @Input() materia:Materia;
   tema:Tema=<Tema>{};
+  submitter:boolean=false;
+  crearTarea:boolean=false;
   constructor(private _tService: TemasService,) { }
 
   ngOnInit() {
@@ -25,7 +27,6 @@ export class FormularioTemaComponent implements OnInit {
         },
         error => console.log(error)
       );
-    this.tema=<Tema>{};
   }
 
 }

@@ -1,3 +1,15 @@
-<p>
-  formulario-tarea works!
-</p>
+<div mdTooltip="Puedes crear varias tareas cambiando los campos de texto." mdTooltipPosition="below">
+  <h5>Tema de Materia a Crear</h5>
+  <div class="materias">
+    <form #formCreateTar="ngForm" novalidate (ngSubmit)="postTarea()">
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="tarea.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <md-input-container class="inputMat">
+        <input type="number" mdInput [(ngModel)]="tarea.dificultad" name="dificultad" placeholder="Dificultad de Tarea" required min="1" max="10">
+      </md-input-container>
+      <button md-raised-button [disabled]="!formCreateTar.valid" mdTooltip="Se creará bajo el tema {{tema.nombre}}" mdTooltipPosition="below" type="submit" color="primary">Crear</button>
+    </form>
+  </div>
+
+</div>
