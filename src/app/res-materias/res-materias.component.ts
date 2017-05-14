@@ -13,6 +13,8 @@ import {Tema} from '../interfaces/tema';
 export class ResMateriasComponent implements OnInit {
   @Input() materia:Materia;
   @Input() idUser:number;
+  @Input() promedio:number;
+  @Input() porcentaje:number;
   temasDirt:Array<Tema>;
   temas:Array<Tema>;
   constructor(private _eService: EstudiantesService,private _mService: MateriasService, private _tService: TemasService) { }

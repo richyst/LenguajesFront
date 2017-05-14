@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let es of estudiantes" class="renglonTabla" (click)="editar(3);selectEstudiante(es);">
+      <tr *ngFor="let es of estudiantes" class="renglonTabla" (click)="editar(3);selectEstudiante(es);" mdTooltip="Click Para ver detalle." mdTooltipPosition="below">
         <td>{{es.id}}</td>
         <td>{{es.nombre}}</td>
         <td>{{es.promedioGlobal}}</td>
@@ -39,10 +39,11 @@
   <h3>Materias cursadas por {{selected.nombre}}</h3>
   <h4 class="text-muted">Promedio Global: {{selected.promedioGlobal}}</h4>
   <hr>
-  <div *ngFor="let mat of materias">
-    <len-res-materias [materia]="mat" [idUser]="selected.id"></len-res-materias>
+  <div *ngFor="let mat of materias; let i = index;">
+    <len-res-materias [materia]="mat" [idUser]="selected.id" [promedio]="promedios[i]" [porcentaje]="porcentajes[i]"></len-res-materias>
     <hr>
   </div>
+  <!-- Opcionalll -->
   <div *ngIf="materias.length===0">
     <h4>Este usuario no tiene materias registradas.</h4>
   </div>

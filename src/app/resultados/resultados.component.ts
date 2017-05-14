@@ -14,7 +14,9 @@ export class ResultadosComponent implements OnInit {
   estudiantes : Array <Estudiante>;
   selected:Estudiante;
   materias = new Array();
-  materiasDirt: Array <Materia>;
+  materiasDirt= new Array();
+  promedios= new Array();
+  porcentajes= new Array();
   relaciones=[];
   editVis:boolean=false;
   tablaVis:boolean=true;
@@ -89,6 +91,8 @@ export class ResultadosComponent implements OnInit {
     for(var i = 0; i<this.relaciones.length;i++){
       for(var k = 0; k<this.materiasDirt.length;k++){
         if(this.relaciones[i].idMateria==this.materiasDirt[k].id){
+          this.porcentajes.push(this.relaciones[i].porcentajeCompletado);
+          this.promedios.push(this.relaciones[i].promedioAlumno);
           this.materias.push(this.materiasDirt[k]);
         }
       }

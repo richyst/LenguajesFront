@@ -20,6 +20,7 @@
 </div>
 <div *ngIf="matVis" class="container" mdTooltip="Puedes crear varias materias cambiando los campos de texto." mdTooltipPosition="below">
   <h4>Nueva Materia</h4>
+  <small class="text-danger warn">No se podrá editar una vez que se cree otra materia o se abandone esta pagina.</small>
   <div class="materias">
     <form #formCreateMat="ngForm" novalidate (ngSubmit)="postMateria();submitted=true;">
       <md-input-container class="inputMat">
