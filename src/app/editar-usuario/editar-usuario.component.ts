@@ -21,7 +21,6 @@ export class EditarUsuarioComponent implements OnInit {
   constructor(private _eService: EstudiantesService,private _mService: MateriasService) { }
 
   ngOnInit() {
-    console.log(this.estudiante);
     this.getMateriasAlumno();
   }
 
@@ -29,7 +28,6 @@ export class EditarUsuarioComponent implements OnInit {
     this._eService.putEstudiante(this.estudiante)
       .subscribe(
         data => {
-          console.log(data);
         },
         error => console.log(error)
       );
@@ -39,7 +37,6 @@ export class EditarUsuarioComponent implements OnInit {
     this._eService.getEstudMat(this.estudiante.id)
       .subscribe(
         data => {
-          console.log(data);
           this.materiasEst=data;
           this.getMaterias();
         },
@@ -50,7 +47,6 @@ export class EditarUsuarioComponent implements OnInit {
     this._mService.getMaterias()
       .subscribe(
         data => {
-          console.log(data);
           this.materiasTot=data;
           this.limpiarMats();
         },
@@ -68,10 +64,9 @@ export class EditarUsuarioComponent implements OnInit {
       }
       if(!check){
         this.inscribir.push(this.materiasTot[i]);
-        
+
       }
     }
-    console.log(this.inscribir);
   }
   enroll(id:number):void{
     this.obj={

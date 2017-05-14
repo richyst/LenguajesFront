@@ -1,3 +1,10 @@
-<p>
-  formulario-tema works!
-</p>
+<h5>Tema de Materia a Crear</h5>
+<form #formCreateTem="ngForm" novalidate (ngSubmit)="postTema()">
+  <md-input-container class="inputMat">
+    <input type="text" mdInput [(ngModel)]="tema.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+  </md-input-container>
+  <md-input-container class="inputMat">
+    <input type="number" mdInput [(ngModel)]="tema.nivel" name="nivel" placeholder="Nivel del Tema" required min="1" max="10">
+  </md-input-container>
+  <button md-raised-button [disabled]="!formCreateTem.valid" type="submit" color="primary">Crear</button>
+</form>

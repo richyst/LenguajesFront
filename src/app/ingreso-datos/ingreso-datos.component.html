@@ -21,7 +21,7 @@
 <div *ngIf="matVis" class="container">
   <h4>Nueva Materia</h4>
   <div class="materias">
-    <form #formCreateMat="ngForm" novalidate (ngSubmit)="postMateria()">
+    <form #formCreateMat="ngForm" novalidate (ngSubmit)="postMateria();submitted=true;">
       <md-input-container class="inputMat">
         <input type="text" mdInput [(ngModel)]="materia.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
       </md-input-container>
@@ -30,9 +30,15 @@
         <input type="text" mdInput [(ngModel)]="materia.maestro" name="maestro" placeholder="Maestro que imparte" required >
       </md-input-container>
       <md-input-container class="inputMat">
-        <input type="number" mdInput [(ngModel)]="materia.nivelCurso" name="nivelCurso" placeholder="Nivel del Curso" required>
+        <input type="number" mdInput [(ngModel)]="materia.nivelCurso" name="nivelCurso" placeholder="Nivel del Curso" required min="1" max="10">
       </md-input-container>
-      <button md-raised-button [disabled]="!formCreateMat.valid" type="submit" color="primary">Crear</button>
+      <button md-raised-button [disabled]="!formCreateMat.valid || agregarTema" type="submit" color="primary">Crear</button>
+      <button md-raised-button *ngIf="submitted" type="button" (click)="agregarTema=true;" color="primary">Agregar Tema</button>
+      <small *ngIf="submitted" class="text-danger warn">Si no se agregan temas a la materia se van a experimentar errores.</small>
     </form>
+
+  </div>
+  <div *ngIf="submitted && agregarTema" class="materias">
+    <len-formulario-tema [materia]="materia"></len-formulario-tema>
   </div>
 </div>

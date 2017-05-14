@@ -16,7 +16,8 @@ export class IngresoDatosComponent implements OnInit {
   materia:Materia=<Materia>{};
   estVis:boolean=false;
   matVis:boolean=false;
-
+  submitted:boolean=false;
+  agregarTema:boolean=false;
   constructor(private _eService: EstudiantesService,private _mService: MateriasService) { }
 
   ngOnInit() {
@@ -50,7 +51,8 @@ export class IngresoDatosComponent implements OnInit {
     this._mService.postMateria(this.materia)
       .subscribe(
         data => {
-          console.log(JSON.stringify(data))
+          console.log(data);
+          this.materia=data;
         },
         error => console.log(error)
       );
