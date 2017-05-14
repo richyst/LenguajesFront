@@ -37,6 +37,12 @@ export class EstudiantesService {
     .map(res => res.json());
   }
 
+  postEstudMat(obj:any){
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.post('http://localhost:8080/restdrools/estud_mat/inserta', obj, {headers: headers})
+    .map(res => res.json());
+  }
   postMateria(estudiante:Estudiante){
     var headers = new Headers ();
     headers.append('Content-Type','application/json');

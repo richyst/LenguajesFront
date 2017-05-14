@@ -8,4 +8,13 @@
       <button md-raised-button [disabled]="!formEdit.valid" type="submit" color="primary">Actualizar</button>
     </form>
   </div>
+
+  <h4>Incripción a Materias</h4>
+  <div>
+    <h5 *ngIf="inscribir.length==0">El Alumno está inscrito en todas las materias.</h5>
+    <div *ngFor="let mat of inscribir">
+      <h5>{{mat.nombre}} impartida por {{mat.maestro}} de nivel:{{mat.nivelCurso}}</h5>
+      <button md-raised-button (click)="enroll(mat.id)" type="button">Inscribir</button>
+    </div>
+  </div>
 </div>
