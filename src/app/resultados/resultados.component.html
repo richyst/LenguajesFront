@@ -39,6 +39,15 @@
   <h3>Materias cursadas por {{selected.nombre}}</h3>
   <h4 class="text-muted">Promedio Global: {{selected.promedioGlobal}}</h4>
   <hr>
+  <div>
+    <h4>Recomendaciones para el Estudiante</h4>
+    <hr>
+    <div *ngFor="let rec of selected.recomendaciones" class="contenedor text-muted">
+      <h5>{{rec}}</h5>
+      <hr>
+    </div>
+  </div>
+  <hr>
   <div *ngFor="let mat of materias; let i = index;">
     <len-res-materias [materia]="mat" [estudiante]="selected" [promedio]="promedios[i]" [porcentaje]="porcentajes[i]"></len-res-materias>
     <hr>

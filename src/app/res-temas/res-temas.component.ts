@@ -29,12 +29,10 @@ export class ResTemasComponent implements OnInit {
       .subscribe(
         data => {
           this.rels=data;
-          console.log(data)
           this._tarService.getTareas()
             .subscribe(
               data1 => {
                 this.tareasDirt=data1;
-                console.log(data1);
                 this.limpiarTareas();
               },
               error => console.log(error)
@@ -61,11 +59,10 @@ export class ResTemasComponent implements OnInit {
     console.log(this.tareas)
   }
   actualizar(obj):void{
-    console.log(obj);
+  console.log(obj);
     this._tarService.putTareaEstud(obj)
       .subscribe(
         data => {
-          console.log(data);
         },
         error => console.log(error)
       );
