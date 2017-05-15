@@ -17,9 +17,27 @@ export class TemasService {
     .map(res => res.json());
   }
   postTema(tema: Tema){
+    if(tema.nivel>10){
+      tema.nivel=10;
+    }
+    if(tema.nivel<1){
+      tema.nivel=1;
+    }
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
     return this._http.post('http://localhost:8080/restdrools/temas/', tema, {headers: headers})
+    .map(res => res.json());
+  }
+  putTema(tema: Tema){
+    if(tema.nivel>10){
+      tema.nivel=10;
+    }
+    if(tema.nivel<1){
+      tema.nivel=1;
+    }
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.put('http://localhost:8080/restdrools/temas/'+tema.id, tema, {headers: headers})
     .map(res => res.json());
   }
 }

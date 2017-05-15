@@ -23,6 +23,7 @@ export class FormularioTemaComponent implements OnInit {
     this._tService.postTema(this.tema)
       .subscribe(
         data => {
+          this.tema=data;
           console.log(JSON.stringify(data));
         },
         error => console.log(error)

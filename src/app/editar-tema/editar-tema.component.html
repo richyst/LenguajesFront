@@ -1,1 +1,55 @@
-{{tema.nombre}}
+<br>
+<div>
+  <h4>Actualizar Valores de Tema</h4>
+  <div class="materias">
+    <form #formPutTem="ngForm" novalidate (ngSubmit)="putTema();">
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="tema.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <md-input-container class="inputMat">
+        <input type="number" mdInput [(ngModel)]="tema.nivel" name="nivel" placeholder="Nivel del Tema" required min="1" max="10">
+      </md-input-container>
+      <button md-raised-button [disabled]="!formPutTem.valid" type="submit" color="primary">Actualizar</button>
+
+    </form>
+  </div>
+
+</div>
+
+<div >
+  <div>
+    <h4>Listado de Tareas de {{tema.nombre}}</h4>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th >ID</th>
+        <th >Nombre</th>
+        <th >Dificultad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tareas"  (click)="selectedTarea=t;" mdTooltip="Click Para ver detalle." mdTooltipPosition="below">
+        <td>{{t.id}}</td>
+        <td>{{t.nombre}}</td>
+        <td>{{t.dificultad}}</td>
+
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+<div *ngIf="selectedTarea">
+  <h5>Tema de Materia a Crear</h5>
+  <div class="materias">
+    <form #formCreateTar="ngForm" novalidate (ngSubmit)="putTarea()">
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="selectedTarea.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <md-input-container class="inputMat">
+        <input type="number" mdInput [(ngModel)]="selectedTarea.dificultad" name="dificultad" placeholder="Dificultad de Tarea" required min="1" max="10">
+      </md-input-container>
+      <button md-raised-button [disabled]="!formCreateTar.valid"  type="submit" color="primary">Actualizar</button>
+    </form>
+  </div>
+</div>

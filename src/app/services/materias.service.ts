@@ -18,12 +18,24 @@ export class MateriasService {
     .map(res => res.json());
   }
   postMateria(materia:Materia){
+    if(materia.nivelCurso>10){
+      materia.nivelCurso=10;
+    }
+    if(materia.nivelCurso<1){
+      materia.nivelCurso=1;
+    }
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
     return this._http.post('http://localhost:8080/restdrools/materias/', materia, {headers: headers})
     .map(res => res.json());
   }
   putMateria(materia: Materia){
+    if(materia.nivelCurso>10){
+      materia.nivelCurso=10;
+    }
+    if(materia.nivelCurso<1){
+      materia.nivelCurso=1;
+    }
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
     return this._http.put('http://localhost:8080/restdrools/materias/'+materia.id, materia, {headers: headers})

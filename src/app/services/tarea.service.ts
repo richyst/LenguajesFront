@@ -20,9 +20,27 @@ export class TareaService {
   }
 
   postTarea(tarea: Tarea){
+    if(tarea.dificultad>10){
+      tarea.dificultad=10;
+    }
+    if(tarea.dificultad<1){
+      tarea.dificultad=1;
+    }
     var headers = new Headers ();
     headers.append('Content-Type','application/json');
     return this._http.post('http://localhost:8080/restdrools/tareas/', tarea, {headers: headers})
+    .map(res => res.json());
+  }
+  putTarea(tarea: Tarea){
+    if(tarea.dificultad>10){
+      tarea.dificultad=10;
+    }
+    if(tarea.dificultad<1){
+      tarea.dificultad=1;
+    }
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.put('http://localhost:8080/restdrools/tareas/'+tarea.id, tarea, {headers: headers})
     .map(res => res.json());
   }
 }
