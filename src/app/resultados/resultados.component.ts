@@ -13,6 +13,7 @@ import {Materia} from '../interfaces/materia';
 export class ResultadosComponent implements OnInit {
   estudiantes : Array <Estudiante>;
   selected:Estudiante;
+  selectedMat:Materia;
   materias = new Array();
   materiasDirt= new Array();
   promedios= new Array();
@@ -21,10 +22,12 @@ export class ResultadosComponent implements OnInit {
   editVis:boolean=false;
   tablaVis:boolean=true;
   matVis:boolean=false;
+  matsVis:boolean=false;
   constructor(private _eService: EstudiantesService,private _mService: MateriasService) { }
 
   ngOnInit() {
     this.getEstudiantes();
+    this.getMaterias();
   }
 
   getEstudiantes():void{
@@ -32,7 +35,6 @@ export class ResultadosComponent implements OnInit {
       .subscribe(
         data => {
           this.estudiantes=data;
-          this.getMaterias();
         },
         error => console.log(error)
       );
@@ -56,6 +58,10 @@ export class ResultadosComponent implements OnInit {
 
     this.getEstudMat(this.selected.id);
   }
+  selectMateria(mat:Materia):void{
+    this.selectedMat=mat;
+    this.getEstudMat(this.selectedMat.id);
+  }
 
   getEstudMat(id:number):void{
     this._eService.getEstudMat(id)
@@ -73,16 +79,25 @@ export class ResultadosComponent implements OnInit {
       this.editVis=true;
       this.tablaVis=false;
       this.matVis=false;
+      this.matsVis=false;
     }
     if(n==2){
       this.editVis=false;
       this.tablaVis=true;
       this.matVis=false;
+      this.matsVis=false;
     }
     if(n==3){
       this.editVis=false;
       this.tablaVis=false;
       this.matVis=true;
+      this.matsVis=false;
+    }
+    if(n==4){
+      this.editVis=false;
+      this.tablaVis=false;
+      this.matVis=false;
+      this.matsVis=true;
     }
   }
 

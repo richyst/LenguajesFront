@@ -1,0 +1,46 @@
+<br>
+<div class="container">
+  <div class="row">
+    <form #formPutMat="ngForm" novalidate (ngSubmit)="putMateria();">
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="materia.nombre" name="nombre" #nombre="ngModel" placeholder="Nombre" required pattern="[a-zA-Z0-9\s]+">
+      </md-input-container>
+      <small *ngIf="!nombre.valid && nombre.dirty && materia.nombre!=''" class="text-danger warn">Caractéres inválidos en nombre.</small>
+      <md-input-container class="inputMat">
+        <input type="text" mdInput [(ngModel)]="materia.maestro" name="maestro" placeholder="Maestro que imparte" required >
+      </md-input-container>
+      <md-input-container class="inputSpec">
+        <input type="number" mdInput [(ngModel)]="materia.nivelCurso" name="nivelCurso" placeholder="Nivel del Curso" required min="1" max="10">
+      </md-input-container>
+      <button md-raised-button [disabled]="!formPutMat.valid" type="submit" color="primary">Actualizar</button>
+    </form>
+  </div>
+
+</div>
+
+<div >
+  <div>
+    <h4>Listado de Temas de {{materia.nombre}}</h4>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th >ID</th>
+        <th >Nombre</th>
+        <th >Nivel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of temas" class="renglonTabla" (click)="selectedTema=t;" mdTooltip="Click Para ver detalle." mdTooltipPosition="below">
+        <td>{{t.id}}</td>
+        <td>{{t.nombre}}</td>
+        <td>{{t.nivel}}</td>
+
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+<div *ngIf="selectedTema">
+  <len-editar-tema [tema]="selectedTema"></len-editar-tema>
+</div>

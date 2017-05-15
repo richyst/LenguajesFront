@@ -23,4 +23,10 @@ export class MateriasService {
     return this._http.post('http://localhost:8080/restdrools/materias/', materia, {headers: headers})
     .map(res => res.json());
   }
+  putMateria(materia: Materia){
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.put('http://localhost:8080/restdrools/materias/'+materia.id, materia, {headers: headers})
+    .map(res => res.json());
+  }
 }

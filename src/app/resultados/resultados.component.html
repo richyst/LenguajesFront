@@ -48,3 +48,43 @@
     <h4>Este usuario no tiene materias registradas.</h4>
   </div>
 </div>
+<hr>
+<div *ngIf="!selectedMat && tablaVis">
+  <div>
+    <h4>Catálogo de Materias.</h4>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Profesor</th>
+        <th>Nivel</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mat of materiasDirt" class="renglonTabla" (click)="editar(4);selectMateria(mat);" mdTooltip="Click Para ver detalle." mdTooltipPosition="below">
+        <td>{{mat.id}}</td>
+        <td>{{mat.nombre}}</td>
+        <td>{{mat.maestro}}</td>
+        <td>{{mat.nivelCurso}}</td>
+        <td class="text-muted acciones">
+          <span
+          mdTooltip="Editar estudiante"
+          mdTooltipPosition="right"
+          class="glyphicon glyphicon-pencil"
+          (click)="editar(1); selectMateria(mat);">
+
+          </span>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
+<div *ngIf="selectedMat">
+  <button md-raised-button class="boton" type="button" (click)="editar(2);selected=null;" color="primary">Regresar</button>
+  <len-editar-materia [materia]="selectedMat"></len-editar-materia>
+</div>
