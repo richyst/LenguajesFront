@@ -43,4 +43,21 @@ export class TareaService {
     return this._http.put('http://localhost:8080/restdrools/tareas/'+tarea.id, tarea, {headers: headers})
     .map(res => res.json());
   }
+  putTareaEstud(tarea: any){
+    if(tarea.calificacion>100){
+      tarea.dificultad=100;
+    }
+    if(tarea.dificultad<0){
+      tarea.dificultad=0;
+    }
+    tarea.completed=true;
+    var headers = new Headers ();
+    headers.append('Content-Type','application/json');
+    return this._http.put('http://localhost:8080/restdrools/tarea_estud/'+tarea.idEstudiante+'/'+tarea.idTarea, tarea, {headers: headers})
+    .map(res => res.json());
+  }
+  getRelacionesEst(id:number){
+    return this._http.get('http://localhost:8080/restdrools/tarea_estud/'+id)
+    .map(res => res.json());
+  }
 }

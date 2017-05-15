@@ -40,7 +40,7 @@
   <h4 class="text-muted">Promedio Global: {{selected.promedioGlobal}}</h4>
   <hr>
   <div *ngFor="let mat of materias; let i = index;">
-    <len-res-materias [materia]="mat" [idUser]="selected.id" [promedio]="promedios[i]" [porcentaje]="porcentajes[i]"></len-res-materias>
+    <len-res-materias [materia]="mat" [estudiante]="selected" [promedio]="promedios[i]" [porcentaje]="porcentajes[i]"></len-res-materias>
     <hr>
   </div>
   <!-- Opcionalll -->
@@ -61,7 +61,6 @@
         <th>Nombre</th>
         <th>Profesor</th>
         <th>Nivel</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -70,15 +69,6 @@
         <td>{{mat.nombre}}</td>
         <td>{{mat.maestro}}</td>
         <td>{{mat.nivelCurso}}</td>
-        <td class="text-muted acciones">
-          <span
-          mdTooltip="Editar estudiante"
-          mdTooltipPosition="right"
-          class="glyphicon glyphicon-pencil"
-          (click)="editar(1); selectMateria(mat);">
-
-          </span>
-        </td>
       </tr>
     </tbody>
 

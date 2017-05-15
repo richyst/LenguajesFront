@@ -1,27 +1,73 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {TemasService} from '../services/temas.service';
+import {TareaService} from '../services/tarea.service';
 import {Tema} from '../interfaces/tema';
+import {Tarea} from '../interfaces/tarea';
+import {Materia} from '../interfaces/materia';
+import {Estudiante} from '../interfaces/estudiante';
 @Component({
   selector: 'len-res-temas',
   templateUrl: './res-temas.component.html',
   styleUrls: ['./res-temas.component.css'],
-  providers:[TemasService]
+  providers:[TemasService, TareaService]
 })
 export class ResTemasComponent implements OnInit {
-  @Input() idUser:string;
+  @Input() estudiante:Estudiante;
   @Input() tema:Tema;
-  constructor(private _tService: TemasService) { }
+  @Input() materia:Materia;
+  rels= new Array();
+  tareasDirt:Array<Tarea>;
+  tareas:Array<Tarea>;
+  tarEst:Array<any>;
+  constructor(private _tService: TemasService, private _tarService: TareaService) { }
 
   ngOnInit() {
+    this.getRels();
   }
-  // getTemas(id:number){
-  //   this._tService.getTemas()
-  //     .subscribe(
-  //       data => {
-  //         this.materia=data;
-  //         this.getTemas(this.materia.id);
-  //       },
-  //       error => console.log(error)
-  //     );
-  // }
+  getRels():void{
+    this._tarService.getRelacionesEst(this.estudiante.id)
+      .subscribe(
+        data => {
+          this.rels=data;
+          console.log(data)
+          this._tarService.getTareas()
+            .subscribe(
+              data1 => {
+                this.tareasDirt=data1;
+                console.log(data1);
+                this.limpiarTareas();
+              },
+              error => console.log(error)
+            );
+        },
+        error => console.log(error)
+      );
+  }
+
+  limpiarTareas(){
+    this.tarEst=[];
+    this.tareas=[];
+    for(var i = 0; i<this.rels.length;i++){
+      for(var j = 0; j<this.tareasDirt.length;j++){
+        if(this.rels[i].idTarea==this.tareasDirt[j].id){
+          if(this.rels[i].idTema==this.tema.id){
+            this.tarEst.push(this.rels[i]);
+            this.tareas.push(this.tareasDirt[j]);
+          }
+        }
+      }
+    }
+    console.log(this.tarEst);
+    console.log(this.tareas)
+  }
+  actualizar(obj):void{
+    console.log(obj);
+    this._tarService.putTareaEstud(obj)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.log(error)
+      );
+  }
 }
